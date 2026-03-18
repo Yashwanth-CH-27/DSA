@@ -1,4 +1,4 @@
-//Two pass approach
+//Two pass approach, Two full traversals
 var removeNthFromEnd = function(head, n) {
     let sentinal = new ListNode();
     sentinal.next = head;
@@ -17,4 +17,26 @@ var removeNthFromEnd = function(head, n) {
     }
     prev.next = prev.next.next;
     return sentinal.next
+};
+
+//One pass, one full traversal
+var removeNthFromEnd = function(head, n) {
+    let sentinal = new ListNode()
+    sentinal.next = head;
+    let first = sentinal;
+
+    for(let i = 0; i < n; i++){
+        first = first.next
+    }
+
+    let second = sentinal;
+
+    while(first.next){
+        second = second.next;
+        first = first.next
+    }
+
+    second.next = second.next.next;
+    return sentinal.next
+    
 };
