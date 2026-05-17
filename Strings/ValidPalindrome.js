@@ -37,3 +37,24 @@ var isPalindrome = function(s) {
 };
 
 //Approach-2 with SC => O(1)
+var isPalindrome = function(s) {
+    s = s.toLowerCase();
+    let f = 0;
+    let b = s.length - 1;
+    while( b > f ){
+        if(!s[f].match(/[a-z0-9]/i)){
+            f++
+        }
+        else if(!s[b].match(/[a-z0-9]/i)){
+            b--
+        }
+        else if(s[f] === s[b]){
+            f++; b--;
+        }
+        else{
+            return false
+        }
+
+    }
+    return true;
+};
