@@ -28,3 +28,15 @@ var isAnagram = function(s, t) {
 };
 
 //Approach-2
+var isAnagram = function(s, t) {
+    if(s.length !== t.length) return false
+    let sMap = new Map()
+    for(let ch of s){
+        sMap.set(ch, (sMap.get(ch) || 0) + 1)
+    }
+    for(let ch of t){
+        if(!sMap.get(ch)) return false
+        sMap.set(ch, sMap.get(ch) - 1)
+    }
+    return true
+}
